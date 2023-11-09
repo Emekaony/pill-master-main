@@ -1,107 +1,31 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import MedicationContainer from './src/components/MedicationContainer';
+import Welcome from './src/screens/Welcome';
 
-const data = [
-  {
-    id: 1,
-    time: '8:00',
-    frequency: 'Daily',
-    name: 'Tylenol',
-    weight: '8mg',
-    qty: '120',
-    fills: '14',
-  },
-  {
-    id: 2,
-    time: '8:00',
-    frequency: 'Daily',
-    name: 'Dummy',
-    weight: '1mg',
-    qty: '120',
-    fills: '14',
-  },
-  {
-    id: 3,
-    time: '8:00',
-    frequency: 'Daily',
-    name: 'Xanax',
-    weight: '200mg',
-    qty: '120',
-    fills: '14',
-  },
-  {
-    id: 4,
-    time: '8:00',
-    frequency: 'Daily',
-    name: 'Xanax',
-    weight: '6mg',
-    qty: '120',
-    fills: '14',
-  },
-];
+/*
+todo:
+  1. Refactor this whole codebase and put everything into its respective screen
+  2. Add react navigation to the app and use it for dummy screens
+  3. Have a screen where people cal schedule medication (shouldn't that come from the pill master/server?)
+  4. Refactor the styling too so we have consistent coloring allthrough the app.
+*/
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const renderPill = item => (
-    <MedicationContainer
-      time={item.time}
-      frequency={item.frequency}
-      name={item.name}
-      weight={item.weight}
-      qty={item.qty}
-      fills={item.fills}
-    />
-  );
-
   return (
-    <View>
-      <View style={styles.header}>
-        <Text style={styles.headerGreeting}>Good Morning!</Text>
-        <Text style={styles.headerDate}>Wednesday, October 25th.</Text>
-      </View>
-      <View style={styles.lowerContainer}>
-        <Text style={styles.daysMedication}>Today's Medication</Text>
-        <FlatList
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          data={data}
-          renderItem={({item}) => renderPill(item)}
-          keyExtractor={item => item.id}
-        />
-      </View>
-    </View>
+    <NavigationContainer>
+      <Welcome />
+    </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  header: {
-    height: 190,
-    backgroundColor: '#375D7F',
-    paddingTop: 100,
-    paddingLeft: 20,
-  },
-  headerGreeting: {
-    fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  headerDate: {
-    color: '#E2E2E2',
-    marginTop: 10,
-    fontSize: 15,
-  },
-  lowerContainer: {
-    paddingLeft: 20,
-  },
-  daysMedication: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 17,
-    marginTop: 20,
   },
 });
 
