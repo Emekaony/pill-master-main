@@ -28,6 +28,9 @@ end
 target 'pill_master' do
   config = use_native_modules!
 
+  # it said to do this
+  use_modular_headers!
+
   # Flags change depending on the env values.
   flags = get_default_flags()
 

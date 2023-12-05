@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
 const Header = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerGreeting}>Good Morning!</Text>
-      <Text style={styles.headerDate}>Wednesday, October 25th.</Text>
+      <Text style={styles.headerGreeting}>Good Evening!</Text>
+      <Text style={styles.headerDate}>Monday, December 4th.</Text>
     </View>
   );
 };

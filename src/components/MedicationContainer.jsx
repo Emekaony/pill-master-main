@@ -10,6 +10,7 @@ const MedicationContainer = ({time, frequency, name, qty, weight}) => {
         <Text style={styles.name}>
           {name} ({weight})
         </Text>
+
         <View style={styles.qtyContainer}>
           <View style={styles.qty}>
             <Text style={{color: 'grey'}}>Qty</Text>
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
     height: 230,
-    width: 180,
+    width: '95%',
     borderWidth: 1,
     borderRadius: 10,
     marginTop: 10,
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     paddingLeft: 20,
     paddingTop: 20,
+    alignItems: 'center',
   },
   time: {
     color: 'white',

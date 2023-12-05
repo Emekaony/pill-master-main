@@ -1,32 +1,56 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import Welcome from './src/screens/Welcome';
+import Welcome from './src/screens/Upcoming_Meds';
+import Profile from './src/screens/Profile';
 
 /*
 todo:
-  1. Refactor this whole codebase and put everything into its respective screen
-  2. Add react navigation to the app and use it for dummy screens
-  3. Have a screen where people cal schedule medication (shouldn't that come from the pill master/server?)
-  4. Refactor the styling too so we have consistent coloring allthrough the app.
+  1. Add tab bar icons to the app
 */
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Upcoming Meds"
+        component={Welcome}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused, color, size}) => {
+            size = focused ? 25 : 20;
+            return (
+              <MaterialCommunityIcons name="pill" color={color} size={size} />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused, color, size}) => {
+            size = focused ? 25 : 20;
+            return <Ionicons name="person" color={color} size={size} />;
+          },
+        }}
+        name="Profile"
+        component={Profile}
+      />
+    </Tab.Navigator>
+  );
+}
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Welcome />
+      <MyTabs />
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

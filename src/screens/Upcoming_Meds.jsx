@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, FlatList} from 'react-native';
+import {View, StyleSheet, Text, FlatList, ScrollView} from 'react-native';
 
 import MedicationContainer from '../components/MedicationContainer';
 import Header from '../components/Header';
@@ -18,19 +18,19 @@ const Welcome = () => {
   );
 
   return (
-    <>
+    <ScrollView>
       <Header />
       <View style={styles.lowerContainer}>
         <Text style={styles.daysMedication}>Today's Medication</Text>
         <FlatList
           showsHorizontalScrollIndicator={false}
-          horizontal
+          Vertical
           data={DATA}
           renderItem={({item}) => renderPill(item)}
           keyExtractor={item => item.id}
         />
       </View>
-    </>
+    </ScrollView>
   );
 };
 
